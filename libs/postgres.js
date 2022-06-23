@@ -11,7 +11,7 @@ async function getConection(){
     database: 'test',
     ssl: true,
     rejectUnauthorized: false,
-    ca: fs.readFileSync('/ca-certificate.crt').toString(),
+    ca: fs.readFileSync('./ca-certificate.crt').toString(),
   });
   await client.connect();
   return client;

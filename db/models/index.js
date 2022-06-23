@@ -1,7 +1,12 @@
-const {Product, ProductSchema} = require('./productsModel');
+const {Producto, ProductoSchema} = require('./productsModel');
+const {Categoria, CategoriaSchema} = require('./categoriasModel');
 
 function setupModels(sequelize){
-  Product.init(ProductSchema, Product.config(sequelize));
+  Categoria.init(CategoriaSchema, Categoria.config(sequelize));
+  Producto.init(ProductoSchema, Producto.config(sequelize));
+
+  //ejecucion de asociaciones
+  Producto.associate(sequelize.models);
 }
 
 

@@ -13,7 +13,7 @@ const configPool = {
   database: config.dbName,
   ssl: {
     rejectUnauthorized: false,
-    ca: fs.readFileSync('./libs/ca-certificate.crt').toString(),
+    ca: fs.readFileSync('./libs/ca-certificate-My.crt').toString(),
   },
 }
 

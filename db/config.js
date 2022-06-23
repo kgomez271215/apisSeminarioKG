@@ -1,5 +1,5 @@
 const { config } = require('../config/config');
-//const fs = require('fs');
+const fs = require('fs');
 
 const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
@@ -9,21 +9,21 @@ module.exports={
   development:{
     url: URI,
     dialect: 'mysql',
-   /* dialectOptions: {
+    dialectOptions: {
       ssl: {
         rejectUnauthorized: false,
-        ca: fs.readFileSync('./ca-certificate-My.crt').toString(),
+        ca: fs.readFileSync('./db/ca-certificate-My.crt').toString()
       }
-    }*/
+    }
   },
   production:{
     url: URI,
     dialect: 'mysql',
-    /*dialectOptions: {
+    dialectOptions: {
       ssl: {
         rejectUnauthorized: false,
-        ca: fs.readFileSync('./ca-certificate-My.crt').toString(),
+        ca: fs.readFileSync('./db/ca-certificate-My.crt').toString()
       }
-    }*/
+    }
   }
 }

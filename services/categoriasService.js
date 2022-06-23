@@ -2,9 +2,9 @@ const faker = require('faker');
 const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 
-class ProductService {
+class CategoriasService {
   constructor() {
-    this.products = [];
+    this.categorias = [];
     this.generate();
     /* this.pool = pool;
      this.pool.on('error', (err) => console.log(err));
@@ -14,7 +14,7 @@ class ProductService {
   generate() {
     const limit = 50;
     for (let index = 0; index < limit; index++) {
-      this.products.push(
+      this.categorias.push(
         {
           id: faker.datatype.uuid(),
           name: faker.commerce.productName(),
@@ -27,38 +27,37 @@ class ProductService {
   }
 
   async create(data) {
-
-    const newProduct = await models.Producto.create(data);
+    const newProduct = await models.Categoria.create(data);
     return newProduct;
 
   }
 
   async find() {
-    const response = await models.Producto.findAll({include: ['Categoria']});
+    const response = await models.Categoria.findAll();
     return response;
   }
 
   async findOne(id) {
-    const user = await models.Producto.findByPk(id);
-    if(!user){
+    const Categoria = await models.Categoria.findByPk(id);
+    if(!Categoria){
       throw boom.notFound('Producto no existe');
     }
-    return user;
+    return Categoria;
 
   }
 
   async update(id, changes) {
-    const user = await this.findOne(id);
-    const rta = await user.update(changes);
+    const categoria = await this.findOne(id);
+    const rta = await categoria.update(changes);
     return rta;
   }
 
   async delete(id) {
-    const user = await this.findOne(id);
-    await user.destroy();
+    const categoria = await this.findOne(id);
+    await categoria.destroy();
     return {id}
   }
 
 }
 
-module.exports = ProductService;
+module.exports = CategoriasService;
