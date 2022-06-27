@@ -1,7 +1,10 @@
 const express = require('express');
+const passport = require('passport');
 const EmpresasService = require('../../services/Compartidos/EmpresasService');
-const { createEmpresaSchema, updateEmpresaSchema, getEmpresaSchema,addServicioEmpresaSchema } = require('../../schemas/Compartidos/EmpresasSchema');
+const { createEmpresaSchema, updateEmpresaSchema, getEmpresaSchema, addServicioEmpresaSchema } = require('../../schemas/Compartidos/EmpresasSchema');
 const validatorHandler = require('../../middlewares/validatorHandler');
+const {checkRoles} = require('../../middlewares/authHandler');
+
 
 const router = express.Router();
 const service = new EmpresasService();
@@ -24,6 +27,8 @@ router.get('/:idEmpresa',
   });
 
 router.post('/',
+  //passport.authenticate('jwt', { session: false }),
+  //checkRoles(1),
   validatorHandler(createEmpresaSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -35,7 +40,7 @@ router.post('/',
     }
   });
 
-  router.post('/add-servicio',
+router.post('/add-servicio',
   validatorHandler(addServicioEmpresaSchema, 'body'),
   async (req, res, next) => {
     try {

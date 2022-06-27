@@ -15,7 +15,6 @@ class UsuariosService {
     });
     delete newUsuario.dataValues.passwd;
     return newUsuario;
-
   }
 
   async find() {
@@ -35,7 +34,8 @@ class UsuariosService {
 
   async findByEmail(email) {
     const response = await models.Usuarios.findOne({
-      where: { email: email }
+      where: { email: email },
+      include: ['Datos']
     });
     return response;
   }

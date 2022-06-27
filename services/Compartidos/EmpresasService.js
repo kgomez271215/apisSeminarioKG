@@ -25,6 +25,13 @@ class EmpresasService {
   }
 
   async findOne(id) {
+    const datosUsuario = await models.Empresas.findByPk(id);
+    if(!datosUsuario){
+      throw boom.notFound('Datos de Empresa no existentes');
+    }
+    return datosUsuario;
+  }
+ /* async findOne(id) {
     const datosUsuario = await models.Empresas.findByPk(id,{
       include:['EmpresaServicios']
     });
@@ -33,7 +40,7 @@ class EmpresasService {
     }
     return datosUsuario;
 
-  }
+  }*/
 
   async update(id, changes) {
     const datosUsuario = await this.findOne(id);

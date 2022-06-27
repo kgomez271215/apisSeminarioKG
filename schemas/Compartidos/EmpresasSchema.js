@@ -3,10 +3,11 @@ const Joi = require('joi');
 const idEmpresa= Joi.number().integer().min(1);
 const empresa = Joi.string().min(1).max(50);
 const descripcion = Joi.string().min(1).max(150);
-const vision = Joi.string().min(1).max(150);
-const mision = Joi.string().min(1).max(150);
-const logo = Joi.string().min(1).max(150);
+const vision = Joi.string().max(150);
+const mision = Joi.string().max(150);
+const logo = Joi.string().max(150);
 const idServicio= Joi.number().integer().min(1);
+const estado= Joi.boolean();
 
 const createEmpresaSchema = Joi.object({
   empresa: empresa.required(),
@@ -21,7 +22,8 @@ const updateEmpresaSchema = Joi.object({
   descripcion: descripcion,
   vision: vision,
   mision: mision,
-  logo: logo
+  logo: logo,
+  estado:estado
 });
 
 const getEmpresaSchema = Joi.object({

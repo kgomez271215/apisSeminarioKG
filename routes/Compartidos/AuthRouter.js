@@ -13,7 +13,7 @@ router.post('/login',
       const payload = {
         sub: user.idUser,
         email: user.email,
-        role: user.idRol,
+        rol: user.idRol,
         empresa: user.idEmpresa
       }
       const token = jwt.sign(payload, config.jwtSecret);

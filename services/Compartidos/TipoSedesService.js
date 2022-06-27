@@ -17,7 +17,14 @@ class TipoSedesService {
     const response = await models.TipoSedes.findAll();
     return response;
   }
-
+  async findOne(id) {
+    const datosUsuario = await models.TipoSedes.findByPk(id);
+    if(!datosUsuario){
+      throw boom.notFound('Datos del Tipo de sede no existentes');
+    }
+    return datosUsuario;
+  }
+/*
   async findOne(id) {
     const datosUsuario = await models.TipoSedes.findByPk(id,{
       include: ['SedesTipo']
@@ -26,8 +33,7 @@ class TipoSedesService {
       throw boom.notFound('Datos del Tipo de sede no existentes');
     }
     return datosUsuario;
-
-  }
+  }*/
 
   async update(id, changes) {
     const datosUsuario = await this.findOne(id);

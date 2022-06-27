@@ -16,13 +16,24 @@ router.get('/:idSede',
   async (req, res, next) => {
     try {
       const { idSede } = req.params;
-      const datosUsuario = await service.findOne(idSede);
+      const datosUsuario = await service.findOneByEmpresa(idSede);
       res.json(datosUsuario);
     } catch (error) {
       next(error);
     }
   });
 
+router.get('/edit/:idSede',
+  validatorHandler(getSedeSchema, 'params'),
+  async (req, res, next) => {
+    try {
+      const { idSede } = req.params;
+      const datosUsuario = await service.findOne(idSede);
+      res.json(datosUsuario);
+    } catch (error) {
+      next(error);
+    }
+  });
 router.post('/',
   validatorHandler(createSedeSchema, 'body'),
   async (req, res, next) => {

@@ -5,6 +5,7 @@ const sede = Joi.string().min(1).max(50);
 const descripcion = Joi.string().min(1).max(150);
 const idEmpresa= Joi.number().integer().min(1);
 const idTipoSede= Joi.number().integer().min(1);
+const estado= Joi.boolean();
 
 const createSedeSchema = Joi.object({
   sede: sede.required(),
@@ -17,7 +18,8 @@ const updateSedeSchema = Joi.object({
   sede: sede,
   descripcion: descripcion,
   idEmpresa: idEmpresa,
-  idTipoSede: idTipoSede
+  idTipoSede: idTipoSede,
+  estado:estado
 });
 
 const getSedeSchema = Joi.object({

@@ -20,17 +20,29 @@ class SedesService {
     return response;
   }
 
-  async findOne(id) {
-    const datosUsuario = await models.Sedes.findByPk(id,);
+  async findOneByEmpresa(id) {
+    const datosUsuario = await models.Sedes.findAll({
+      where: { idEmpresa: id },
+      include: ['Tipo']
+    });
     if(!datosUsuario){
       throw boom.notFound('Datos de Sede no existentes');
     }
     return datosUsuario;
-
   }
-
+  async findOne(id) {
+    const datosUsuario = await models.Sedes.findByPk(id,{
+      include: ['Tipo']
+    });
+    if(!datosUsuario){
+      throw boom.notFound('Datos de Sede no existentes');
+    }
+    return datosUsuario;
+  }
   async update(id, changes) {
-    const datosUsuario = await this.findOne(id);
+    const datosUsuario = await models.Sedes.findByPk(id,{
+      include: ['Tipo']
+    });
     const rta = await datosUsuario.update(changes);
     return rta;
   }
