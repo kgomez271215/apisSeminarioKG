@@ -7,7 +7,14 @@ const router = express.Router();
 const service = new UsuariosService();
 
 router.get('/', async (req, res) => {
+
   const usuarios = await service.find();
+  res.json(usuarios)
+})
+
+router.get('/Admin', async (req, res) => {
+  const idEmpresa = req.query;
+  const usuarios = await service.findAdmin(idEmpresa);
   res.json(usuarios)
 })
 

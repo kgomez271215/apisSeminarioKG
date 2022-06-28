@@ -8,6 +8,8 @@ const {Sedes,SedesSchema} = require('./Compartidos/SedesModel');
 const {TipoSedes,TipoSedesSchema} = require('./Compartidos/TipoSedesModel');
 const {Servicios,ServiciosSchema} = require('./Compartidos/ServiciosModel');
 const {ServiciosEmpresa,ServiciosEmpresaSchema} = require('./Compartidos/ServiciosEmpresaModel');
+const {CorreosUsuario,CorreosUsuarioSchema} = require('./Compartidos/CorreosUsuarioModel');
+const {TelefonosUsuario,TelefonosUsuarioSchema} = require('./Compartidos/TelefonosUsuarioModel');
 
 function setupModels(sequelize){
   Categoria.init(CategoriaSchema, Categoria.config(sequelize));
@@ -21,6 +23,8 @@ function setupModels(sequelize){
   TipoSedes.init(TipoSedesSchema, TipoSedes.config(sequelize));
   Servicios.init(ServiciosSchema, Servicios.config(sequelize));
   ServiciosEmpresa.init(ServiciosEmpresaSchema, ServiciosEmpresa.config(sequelize));
+  CorreosUsuario.init(CorreosUsuarioSchema, CorreosUsuario.config(sequelize));
+  TelefonosUsuario.init(TelefonosUsuarioSchema, TelefonosUsuario.config(sequelize));
 
   //ejecucion de asociaciones
   Producto.associate(sequelize.models);
@@ -30,6 +34,9 @@ function setupModels(sequelize){
   Empresas.associate(sequelize.models);
   Sedes.associate(sequelize.models);
   TipoSedes.associate(sequelize.models);
+  CorreosUsuario.associate(sequelize.models);
+  TelefonosUsuario.associate(sequelize.models);
+
 }
 
 

@@ -66,6 +66,9 @@ const UsuariosSchema = {
 class Usuarios extends Model {
   static associate(models){
     this.hasOne(models.DatosUsuario,{as: 'Datos',foreignKey: 'idUser'});
+    this.hasOne(models.CorreosUsuario,{as: 'Correo',foreignKey: 'idUser'});
+    this.hasOne(models.TelefonosUsuario,{as: 'Telefono',foreignKey: 'idUser'});
+
     this.belongsTo(models.Empresas, { foreignKey: 'idEmpresa', as:'Empresa' });
     this.belongsTo(models.Roles, { foreignKey: 'idRol', as:'Rol' });
   };
