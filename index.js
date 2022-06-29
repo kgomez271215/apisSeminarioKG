@@ -4,6 +4,7 @@ const routerApi = require('./routes');
 const { logErrors, errorHandler,boomErrorHandler,ormErrorHandler } = require('./middlewares/errorHandler');
 const {checkApiKey} = require('./middlewares/authHandler');
 const app = express();
+const hostname = 'localhost';
 const port = 3000;
 app.use(express.json());
 
@@ -20,14 +21,23 @@ const options = {
 app.use(cors(options));
 */
 require('./utils/auth');
-
+/*
 app.get('/',checkApiKey, (req, res) => {
+  res.send('Hola mi server en express');
+});*/
+
+/*app.listen(port, () => {
+  console.log('Api corriendo en puerto: ' + port);
+})*/
+
+
+app.get('/', (req, res) => {
   res.send('Hola mi server en express');
 });
 
-app.listen(port, () => {
-  console.log('Api corriendo en puerto: ' + port);
-})
+app.listen(port, hostname, () => {
+  console.log(`Servidor corriento en: http://${hostname}:${port}/`);
+});
 
 routerApi(app);
 
