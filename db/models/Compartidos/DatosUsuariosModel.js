@@ -1,7 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const {USUARIOS_TABLE} = require('./UsuariosModel');
 
-const DATOSUSUARIO_TABLE = 'datosUsuario';
+const DATOSUSUARIO_TABLE = 'datosusuario';
 
 const DatosUsuarioSchema = {
   idDatosUsuario: {

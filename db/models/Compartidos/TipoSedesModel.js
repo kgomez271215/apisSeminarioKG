@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const TIPOSEDES_TABLE = 'tipoSede';
+const TIPOSEDES_TABLE = 'tiposede';
 
 const TipoSedesSchema = {
   idTipoSede: {
