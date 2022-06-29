@@ -32,7 +32,25 @@ app.get('/',checkApiKey, (req, res) => {
 
 
 app.get('/', (req, res) => {
-  res.send('Hola mi server en express');
+  res.send(`
+  <html>
+  <head>
+      <title>Seminario de Analisis y Diseño de sistemas</title>
+      <style>
+      body{
+          background-color: #e3e3e3;
+      }
+      </style>
+  </head>
+  <body>
+  <center >
+  <h1>Seminario de Analisis y Diseño de sistemas</h1>
+  <h2>Nombre: Kevin Hernán Gómez Malchic</h2>
+  <h2>Carnet: 0908-14-12551</h2>
+  <img src="https://i.pinimg.com/originals/6c/f0/f2/6cf0f25b334161bda56f9262c2b5773a.gif">
+  </center>
+  </body>
+  </html>`);
 });
 
 app.listen(port, hostname, () => {
