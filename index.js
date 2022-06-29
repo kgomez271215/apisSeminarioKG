@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const routerApi = require('./routes');
 const { logErrors, errorHandler,boomErrorHandler,ormErrorHandler } = require('./middlewares/errorHandler');
 const {checkApiKey} = require('./middlewares/authHandler');
@@ -7,7 +7,7 @@ const app = express();
 const port = 3000;
 app.use(express.json());
 
-const whitelist = ['http://localhost:3000','http://localhost:8000', 'https://myapp.co'];
+/*const whitelist = ['http://localhost:3000','http://localhost:8000', 'https://myapp.co'];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
@@ -18,6 +18,7 @@ const options = {
   }
 }
 app.use(cors(options));
+*/
 require('./utils/auth');
 
 app.get('/',checkApiKey, (req, res) => {
